@@ -1,5 +1,56 @@
 
-$body-bg: #282c34;
 
+$body-bg: #ced4da;
+$font-family-base:  'Roboto';
+$card-bg: #212529;
+
+.image-style {
+   width: 11rem;
+   height: 16rem; 
+}
+.card {
+   flex-direction: row !important;
+   border-left: none !important;
+   border-radius: 0 !important;
+}
+
+.CircularProgressbar {
+   width: 15%;
+   height: 15%;
+}
+
+#card-text{
+   word-break: break-all;
+   font-size: 13px;
+
+}
+
+#canvas{
+   display: flex; 
+   align-items: center;
+   margin: 0 0 20px 0 ;
+}
+
+#title {
+   margin: 0;
+   padding: 0;
+   font-weight: 600;
+   font-size: 14ps;
+   position: relative;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+#info{
+   flex: 1;
+   padding-left: 10px;
+}
+
+#card {
+   border-radius: 0;
+   border-left: none;
+   display: flex;
+   flex-direction: row; 
+}
 
 @import '~bootstrap/scss/bootstrap.scss';
