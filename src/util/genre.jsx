@@ -83,11 +83,7 @@ const Genre = (id) => {
   const genre = genres.filter(genre => genre.id === id)
 
   return (
-    <ul class="list-group">
-      {genre.map(e =>
-        <li class="list-group-item">{e.name}</li>
-      )}
-    </ul>
+    genre.map(e => e.name)
   )
 }
 

@@ -9,11 +9,12 @@ const CardBody = ({ title, release_date, overview, vote_average, genre_ids }) =>
     <div className="card-body">
       <div id="canvas">
         <div id="info">
+    
           <Title title={title} />
           <ReleaseDate date={release_date} />
         </div>
       </div>
-      <Overview overview={overview.substring(0, 300) + "..."} />
+      <Overview overview={overview.substring(0, 250) + "..."} />
     </div >
   );
 }
