@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from './image'
+// import Image from './image'
 import Title from './title'
 import Overview from './overview'
 import Rating from './rating'
@@ -30,7 +30,7 @@ const Detail = (props) => {
             }}>
             <h4>{movie.title}</h4>
             <div style={{ display: 'flex', alignItems: 'center', paddingBottom: 10 }}>
-              <Rating rating={colorValue} /><span>User scroe</span>
+              <Rating rating={colorValue} /><span>User score</span>
             </div>
             <p>{movie.overview}</p>
           </div>
