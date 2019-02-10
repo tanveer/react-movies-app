@@ -1,8 +1,16 @@
 
-
-$body-bg: #ced4da;
-$font-family-base:  'Roboto';
-$card-bg: #212529;
+$body-bg: 		#010305;
+$font-family-base:  'Roboto', sans-serif;
+$card-bg: #fff;
+html, body {
+   color: #0d1c25;
+}
+nav {
+   background-color: #003986 !important;
+}
+a {
+   color:#ff6600	 !important;
+}
 
 .image-style {
    width: 11rem;
@@ -36,14 +44,11 @@ $card-bg: #212529;
    padding: 0;
    font-weight: 600;
    font-size: 14ps;
-   position: relative;
-   overflow: hidden;
-   text-overflow: ellipsis;
 }
 
 #info{
    flex: 1;
-   padding-left: 10px;
+   // padding-left: 10px;
 }
 
 #card {
@@ -53,4 +58,79 @@ $card-bg: #212529;
    flex-direction: row; 
 }
 
-@import '~bootstrap/scss/bootstrap.scss';
+.header{
+   display: flex;
+   height: 100px;
+   margin-top: 20px;
+   margin-bottom: -5px;
+   align-items: flex-end
+}
+
+.header > p{
+   text-transform: capitalize;
+   margin: 0;
+   font-weight: 600;
+   font-size: 1.5rem
+}
+
+@media screen and (max-width: 400px) {
+   .card {
+      height: 14rem !important;
+   }
+
+   .image-style{
+      height: 14rem;
+      width: 9rem
+   }
+
+   #card-text{
+      font-family: 'Raleway';
+      font-size: 10px;
+   }
+
+   #title {
+      font-weight: 600;
+      font-size: 12px;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .card {
+      height: 16rem;
+   }
+}
+
+@media screen and (max-width: 1000px) {
+   .card {
+      height: 14rem;
+   }
+   .image-style {
+      width: 8rem;
+      height: 14rem;
+   }
+   #card-text{
+      font-size: 10px;
+   }
+
+   #title {
+      font-weight: 600;
+      font-size: 12px;
+   }
+}
+
+@media screen and (max-width: 320px) {
+   .card{
+      display: none;
+   }
+   .card-body{
+      display: none;
+   }
+   .image-style {
+      width: 14rem;
+   }
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+

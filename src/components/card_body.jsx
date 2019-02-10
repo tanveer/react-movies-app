@@ -4,12 +4,10 @@ import ReleaseDate from './release_date'
 import Overview from './overview'
 import Rating from './rating';
 
-
-const CardBody = ({ title, release_date, overview, vote_average }) => {
+const CardBody = ({ title, release_date, overview, vote_average, genre_ids }) => {
   return (
     <div className="card-body">
       <div id="canvas">
-        <Rating rating={vote_average} />
         <div id="info">
           <Title title={title} />
           <ReleaseDate date={release_date} />

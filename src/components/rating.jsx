@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgressbar from 'react-circular-progressbar';
+import $ from 'jquery'
 
 const Rating = ({ rating }) => {
   rating = rating.toString().split('.').join('')

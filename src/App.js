@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import Card from './components/card';
 import Navbar from './components/navbar'
-import Image from './components/image'
 import Pagination from './components/pagination'
-import { key, discoverUrl } from './util/api'
-
+import { key, baseUrl } from './util/api'
+import Image from './components/image'
 
 
 class App extends Component {
 
   state = {
     currentPage: 1,
-    query: '',
+    query: 'popular',
     movies: [],
     pageCount: 0,
     offset: 0,
-    countPerPage: 25
+    countPerPage: null,
+    region: 'us'
   }
 
   componentDidMount() {
@@ -23,8 +23,8 @@ class App extends Component {
   }
 
   discoverMovies = async () => {
-    const { currentPage, totlaPage } = this.state
-    const url = `${discoverUrl}api_key=${key}&page=${currentPage}`
+    const { currentPage, query, region } = this.state
+    const url = `${baseUrl}${query}?api_key=${key}&page=${currentPage}&region=${region}&adult=false`
     const response = await fetch(url)
     const json = await response.json()
     if (json.results) {
@@ -32,9 +32,14 @@ class App extends Component {
       this.setState({
         movies: [...json.results],
         pageCount: pageCount,
-        currentPage: currentPage + 1
       })
     }
+  }
+
+  handleFetchRequest = async (e) => {
+    this.setState({ query: e, currentPage: 1 },
+      () => this.discoverMovies()
+    )
   }
 
   handleLoadMoreMovies = (data) => {
@@ -49,27 +54,38 @@ class App extends Component {
       movies,
       countPerPage,
       pageCount,
-      currentPage } = this.state
+      query } = this.state
 
     return (
-      <div className="container">
+      <div>
         <div>
           <Navbar handleFetchRequest={this.handleFetchRequest} />
         </div>
-        <div className="row" style={{ marginTop: 100 }}>
-          {movies &&
-            movies.map(movie =>
-              <div className="col-md-6 my-2 main-card">
-                <Card key={movie.id} movie={movie} />
-              </div>
-            )
-          }
+        <div className="container">
+          <div className="header">
+            <p style={{ color: '#ff6600' }}>{query === "now_playing" ? "now playing" : query}</p>
+          </div>
+          <div className="row">
+            {movies &&
+              movies.map(movie =>
+                <div className="col-6 my-2 card-stack" style={{ display: 'flex' }}>
+                  <Image posterPath={movie.poster_path} />
+                  <Card key={movie.id} movie={movie} />
+                </div>
+              )
+            }
+
+          </div>
+          <Pagination
+            pageCount={pageCount}
+            loadMoreMovies={this.handleLoadMoreMovies}
+          />
         </div>
-        <Pagination
-          pageCount={pageCount}
-          countPerPage={countPerPage}
-          loadMoreMovies={this.handleLoadMoreMovies}
-        />
+        <div>
+          <nav className="navbar navbar-light bg-light">
+            <a href="https://www.themoviedb.org/" target="_blank">The Movie DB API</a>
+          </nav>
+        </div>
       </div>
     );
   }

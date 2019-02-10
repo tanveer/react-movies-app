@@ -3,23 +3,19 @@ import Input from './input'
 
 const Navbar = ({ handleFetchRequest }) => {
   return (
-    <nav className="navbar fixed-top navbar-light bg-light">
+    <nav className="navbar fixed-top">
       <a className="navbar-brand">Movies</a>
-      <ul className="nav nav-tabs">
+      <ul className="nav">
         <li className="nav-item">
-          <a className="nav-link" >Comedy</a>
+          <a href="#" className="nav-link active" onClick={() => handleFetchRequest('popular')}>Popular</a>
         </li>
         <li className="nav-item">
-          <button className="nav-link">Action</button>
+          <a href="#" className="nav-link" onClick={() => handleFetchRequest('upcoming')}>Upcoming</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/">Horor</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/">Drama</a>
+          <a href="#" className="nav-link" onClick={() => handleFetchRequest('now_playing')}>Now Playing</a>
         </li>
       </ul>
-      <Input handleFetchRequest={handleFetchRequest} />
     </nav>
   )
 }
