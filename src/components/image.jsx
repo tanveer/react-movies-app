@@ -5,7 +5,7 @@ const regex = /\s+/g
 const Image = (props) => {
   const pathName = props.title.replace(regex, '-').toLowerCase()
   const { poster_path } = props
-  const posterUrl = `${process.env.REACT_APP_POSTER_URL}${poster_path}`
+  const posterUrl = `https://image.tmdb.org/t/p/original/${poster_path}`
   return (
     <div className="image-style shadow-sm">
       <Link to={{

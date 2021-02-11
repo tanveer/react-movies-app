@@ -8,8 +8,8 @@ const Detail = (props) => {
   const { movie } = props.location.state
   const colorValue = movie.vote_average.toString().split('.').join('')
   const color = `rgba(${255 / colorValue},${255 / colorValue},${255 / colorValue},0.8)`
-  const background = `${process.env.REACT_APP_POSTER_URL}${movie.backdrop_path}`
-  const image = `${process.env.REACT_APP_POSTER_URL}${movie.poster_path}`
+  const background = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+  const image = `https://image.tmdb.org/t/p/original/${movie.poster_path}`
   return (
     <div className="card bg-dark text-white" >
       <img src={background} className="card-img" alt={movie.id} />
